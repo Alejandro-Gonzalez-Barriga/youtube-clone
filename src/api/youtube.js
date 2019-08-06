@@ -17,7 +17,7 @@ export default axios.create({
       //part snippet will take place of the ex on line 15
       part: 'snippet',
       //this is the maximum results to be returned
-      maxResults: 5
+      maxResults: 5,
       key: '[API KEY]'
     }
 });
