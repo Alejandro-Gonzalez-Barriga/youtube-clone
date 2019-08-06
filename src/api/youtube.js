@@ -10,14 +10,5 @@ import axios from 'axios';
 //to have our code organized better, we will use .create
 export default axios.create({
     //this is the base url
-    baseURL: 'https://www.googleapis.com/youtube/v3',
-    //after the base url, we usually have parameters
-    //ex. ..?apiKey=1232123123&searchQuery='mista madd'
-    params: {
-      //part snippet will take place of the ex on line 15
-      part: 'snippet',
-      //this is the maximum results to be returned
-      maxResults: 5,
-      key: '[API KEY]'
-    }
+    baseURL: 'https://www.googleapis.com/youtube/v3'
 });
