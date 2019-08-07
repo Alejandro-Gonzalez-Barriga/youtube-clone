@@ -9,6 +9,10 @@ import youtube from './api/youtube';
 
 
 class App extends React.Component {
+	state = {
+		video: [],
+		selectedVideo: null
+	}
 
 	//the following handles the user request to the api,
 	//it concats the base url with the parameters of the function
@@ -26,21 +30,31 @@ class App extends React.Component {
 	      //this is the maximum results to be returned
 	      maxResults: 5,
 	      key: '',
+				//in the youtube api q is most likely a query, and we will query the searchTerm
 				q: searchTerm
 			}
 		});
-		console.log(response.data.items)
+		//console.log the response first,
+		//look at the object fetched
+		//determine what properties of the object you want to display
+		//console.log(response.data.items) //should give you the list of 5 items
+
+		this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] })
+		//console.log(response.data.items, response.data.items[0])
 	}
 
 	render() {
-      return (
-        <Grid justify="center" container spacing={10}>
-					<Grid item xs={12}>
+		const {selectedVideo} = this.state
+		//console.log(selectedVideo)
+
+		return (
+			<Grid justify="center" container spacing={10}>
+					<Grid item xs={12}  >
 						<Grid container spacing={10}>
 							<Grid item xs= {12}>
 								<SearchBar onFormSumbit={this.handleSubmit} />
 							<Grid item xs ={8}>
-								<VideoDetail />
+								<VideoDetail video={selectedVideo} />
 							</Grid>
 							<Grid item xs ={4}>
 								<VideoList />
