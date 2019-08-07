@@ -10,9 +10,17 @@ import youtube from './api/youtube';
 
 class App extends React.Component {
 	state = {
-		video: [],
-		selectedVideo: null
-	}
+		videos: [],
+		selectedVideo: null,
+	};
+
+	componentDidMount() {
+		this.handleSubmit('money pink floyd')
+	};
+
+	onVideoSelect = (video) => {
+		this.setState({selectedVideo: video})
+	};
 
 	//the following handles the user request to the api,
 	//it concats the base url with the parameters of the function
@@ -41,24 +49,24 @@ class App extends React.Component {
 
 		this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] })
 		//console.log(response.data.items, response.data.items[0])
-	}
+	};
 
 	render() {
-		const {selectedVideo} = this.state
+		const {selectedVideo, videos} = this.state
 		//console.log(selectedVideo)
 
 		return (
 			<Grid justify="center" container spacing={10}>
-					<Grid item xs={12}  >
+					<Grid item xs={11}  >
 						<Grid container spacing={10}>
 							<Grid item xs= {12}>
 								<SearchBar onFormSumbit={this.handleSubmit} />
+							</Grid>
 							<Grid item xs ={8}>
 								<VideoDetail video={selectedVideo} />
 							</Grid>
 							<Grid item xs ={4}>
-								<VideoList />
-							</Grid>
+								<VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
 							</Grid>
 						</Grid>
 					</Grid>
