@@ -15,7 +15,7 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
-		this.handleSubmit('money pink floyd')
+		this.handleSubmit('')
 	};
 
 	onVideoSelect = (video) => {
@@ -37,7 +37,7 @@ class App extends React.Component {
 	      part: 'snippet',
 	      //this is the maximum results to be returned
 	      maxResults: 5,
-	      key: '',
+	      key: 'AIzaSyBE0UOfLYoAJVj15RGZwNQ9D1irRXF_T64',
 				//in the youtube api q is most likely a query, and we will query the searchTerm
 				q: searchTerm
 			}

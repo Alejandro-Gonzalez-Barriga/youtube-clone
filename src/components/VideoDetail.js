@@ -11,7 +11,7 @@ const VideoDetail = ({video}) => {//{video} is props in a destructured format
 
   return(
     <React.Fragment>
-      <Paper elevation={6} style={{height: '70%' }}>
+      <Paper elevation={6} style={{height: '80%' }}>
         <iframe
           frameBorder="0"
           height="100%"
